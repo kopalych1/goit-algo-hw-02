@@ -12,9 +12,10 @@ def is_palindrome(input: str) -> bool:
     dq = deque()
 
     for chr in input:
-        dq.append(chr)
+        if chr != ' ':
+            dq.append(chr.lower())
 
-    for _ in range(len(dq) // 2):
+    while len(dq) > 1:
         l: str = dq.popleft()
         r: str = dq.pop()
 
@@ -28,13 +29,34 @@ def main():
     def test(test_str):
         print(test_str, "|", is_palindrome(test_str))
 
+    test("A")
+    test("AA")
+    test("ABA")
+    test("ABBA")
+    
+    print("\n--- Cases ---")
+    test("Aba")
+    test("RaceCar")
+    test("A man a plan a canal Panama")
+    test("Madam")
+    
+    print("\n--- Spaces ---")
+    test("taco cat")
+    test("A Santa at NASA")
+    test("Was it a car or a cat I saw")
+    
+    print("\n--- Not palindrome ---")
     test("HELLO")
     test("HEOEH")
-    test("CARRAC")
-    test("OK")
+    test("Python")
+    test("AB")
+    
+    print("\n--- Special chars ---")
+    test("A|||a")
     test("-+-")
-    test("AA")
-    test("A")
+    test("12321")
+    test("12345")
+
     try:
         test("")
     except ValueError:
