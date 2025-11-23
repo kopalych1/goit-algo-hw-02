@@ -24,7 +24,7 @@ def is_symmetrical(input: str) -> bool:
             if ({'(': ')', '{': '}', '[': ']'}[top] != chr):
                 return False
 
-    return True
+    return len(stack) == 0
 
 
 
@@ -38,6 +38,8 @@ def main():
     test("[)")
     test("[[)]")
     test("([{}][]{})")
+    test("([")
+    test("(")
     try:
         test("")
     except ValueError:
