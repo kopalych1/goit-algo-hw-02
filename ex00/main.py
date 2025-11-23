@@ -1,6 +1,5 @@
 from queue import Queue
 from random import randint
-import re
 
 
 queue = Queue()
